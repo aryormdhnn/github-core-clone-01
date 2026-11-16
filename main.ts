@@ -1,3 +1,8 @@
+// This module is the process's front door: it starts the forge's HTTP server on a
+// port the operating system hands out at runtime, announces that address to the
+// trial environment so the test suite can reach it, and then simply idles in a
+// loop checking whether the run has finished. Once the environment reports
+// completion, the server shuts down and the process leaves cleanly.
 // The entry <-> env lifecycle, as env/src/wire.ts settles it: bind an ephemeral port, tell the env the
 // port it bound, then poll until the env says the trial is over and exit 0. Keep this file as it is:
 // the suite scores the server app.ts builds, and the lifecycle is the harness's, not the contest's.
